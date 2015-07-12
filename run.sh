@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo python photobooth.py
+sudo python glbooth.py
