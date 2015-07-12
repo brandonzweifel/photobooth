@@ -6,15 +6,13 @@ import os
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
-template = Image.open("template.jpg")
+template = Image.open("template.png")
 
 # Create the composite
-template.paste(Image.open("image1.jpg").resize((559, 419)), (30, 408))
-template.paste(Image.open("image2.jpg").resize((559, 419)), (610, 408))
-template.paste(Image.open("image3.jpg").resize((559, 419)), (30, 853))
-template.paste(Image.open("image4.jpg").resize((559, 419)), (610, 853))
-
-template = template.transpose(Image.FLIP_TOP_BOTTOM)
+template.paste(Image.open("image1.jpg").resize((559, 419)), (28, 468))
+template.paste(Image.open("image2.jpg").resize((559, 419)), (609, 468))
+template.paste(Image.open("image3.jpg").resize((559, 419)), (28, 912))
+template.paste(Image.open("image4.jpg").resize((559, 419)), (609, 912))
 
 # Save it!
 filename = os.path.dirname(os.path.realpath(__file__)) + "/archive/" + datetime.datetime.today().strftime("%Y%m%d-%H%M%S") + ".jpg"
@@ -22,4 +20,4 @@ filename = os.path.dirname(os.path.realpath(__file__)) + "/archive/" + datetime.
 template.save(filename)
 
 # print it out!
-os.system("lp -o portrait -o fit-to-page " + filename)
+os.system("lp -o portrait " + filename)
