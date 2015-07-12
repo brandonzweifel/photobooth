@@ -35,14 +35,9 @@ class ProcessScene(photobooth.Scene):
 
     def on_show(self):
 
-        wait = photobooth.WaitAction(duration=10)
-        wait.attach_child(photobooth.CallableAction(lambda: self.global_event_queue.add_event(photobooth.Event(constants.EVENT_END_SCENE))))
-
-        self.attach_action(wait)
-
         # do the thing...
-        # command = "/usr/bin/python " + os.path.dirname(os.path.realpath(__file__)) + "/photos/process-photos.py"
-        # self.process = subprocess.Popen(command, shell=True)
+        command = "/usr/bin/python " + os.path.dirname(os.path.realpath(__file__)) + "/photos/process-photos.py"
+        self.process = subprocess.Popen(command, shell=True)
 
     def update(self):
         photobooth.Scene.update(self)

@@ -48,11 +48,12 @@ current_scene.on_show()
 grain_shader = pi3d.Shader("uv_flat")
 
 grain_images = [
-    pi3d.ImageSprite("resources/grain1.jpg", shader=grain_shader, x=0, y=0, z=1, w=DISPLAY.width, h=DISPLAY.height)
+    pi3d.ImageSprite("resources/grain1.jpg", shader=grain_shader, x=0, y=0, z=1, w=DISPLAY.width, h=DISPLAY.height),
+    pi3d.ImageSprite("resources/grain2.jpg", shader=grain_shader, x=0, y=0, z=1, w=DISPLAY.width, h=DISPLAY.height)
 ]
 
 grain_images[0].set_alpha(0.05)
-# grain_images[1].set_alpha(0.1)
+grain_images[1].set_alpha(0.025)
 
 camera_utils.start_capturing_image()
 
@@ -61,8 +62,11 @@ while DISPLAY.loop_running():
     current_scene.update()
     current_scene.draw()
 
-    if random.randrange(0, 100) < 50:
+    r = random.randrange(0, 100)
+    if r < 33:
         grain_images[0].draw()
+    elif r < 66:
+        grain_images[1].draw()
 
     # button stuff
     if GPIO.input(17) == 0:
