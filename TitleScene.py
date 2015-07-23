@@ -39,4 +39,4 @@ class TitleScene(photobooth.Scene):
         while self.event_queue.has_events():
             if self.event_queue.get_event().get_type() == photobooth.Event.BUTTON:
                 # go to the next scene...
-                self.global_event_queue.add_event(photobooth.Event(constants.EVENT_HELP_SCENE))
+                self.global_event_queue.add_event(photobooth.Event(constants.EVENT_PICTURE_SCENE))
